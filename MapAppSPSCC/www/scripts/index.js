@@ -54,6 +54,18 @@ var firstImage = '';
 
 var map;
 function initMap() {
+
+    function alertDismissed() {
+        // do something
+        
+    }
+    navigator.vibrate(3000);
+    navigator.notification.alert(
+        'You are the winner!',  // message
+        alertDismissed,         // callback
+        'Game Over',            // title
+        'Done'                  // buttonName
+    );
     navigator.geolocation.getCurrentPosition(function (position) {
         var pos = {
             lat: position.coords.latitude,
@@ -416,6 +428,7 @@ function displayLocation(position) {
         firstImage = 'images/mapIcones/35v.png';
        // addMarker('images/mapIcones/35v.png', { lat: 47.022118, lng: -122.935187 }, 'Building 35 ');
 
+
         
         //showMarkers();
         deleteMarkers();
@@ -445,23 +458,92 @@ function displayLocation(position) {
         var building13 = addMarker('images/mapIcones/13.png', { lat: 47.024291, lng: -122.926769 }, 'Bldg 13 - Grounds Maintenance');
 
         visitedLocations.push('building 35');
+        navigator.vibrate(3000);
+
+        function alertDismissed() {
+            // do something
+        }
+
+        navigator.notification.alert(
+            'You are the winner!',  // message
+            alertDismissed,         // callback
+            'Game Over',            // title
+            'Done'                  // buttonName
+        );
+
     }
     else if (google.maps.geometry.poly.containsLocation(point, bermudaTriangle22) === true) {
         addMarker('images/mapIcones/checked.png', { lat: 47.022942, lng: -122.930479 }, 'Building 35 '); // 47.022942, -122.930479
         visitedLocations.push('building 22');
+        navigator.vibrate(3000);
+        function alertDismissed() {
+            // do something
+        }
+
+        navigator.notification.alert(
+            'You are the winner!',  // message
+            alertDismissed,         // callback
+            'Game Over',            // title
+            'Done'                  // buttonName
+        );
+
     } else if (google.maps.geometry.poly.containsLocation(point, bermudaTriangle25) === true) {
         addMarker('images/mapIcones/checked.png', { lat: 47.023714, lng: -122.929550 }, 'Building 35 '); // 47.023714, -122.929550
         visitedLocations.push('building 25');
+        navigator.vibrate(3000);
+
+        function alertDismissed() {
+            // do something
+        }
+
+        navigator.notification.alert(
+            'You are the winner!',  // message
+            alertDismissed,         // callback
+            'Game Over',            // title
+            'Done'                  // buttonName
+        );
+
     } else if (google.maps.geometry.poly.containsLocation(point, bermudaTriangle27) === true) {
         addMarker('images/mapIcones/checked.png', { lat: 47.021966, lng: -122.930044 }, 'Building 35 '); // 47.021966, -122.930044
         visitedLocations.push('building 27');
+        navigator.vibrate(3000);
+
+        function alertDismissed() {
+            // do something
+        }
+
+        navigator.notification.alert(
+            'You are the winner!',  // message
+            alertDismissed,         // callback
+            'Game Over',            // title
+            'Done'                  // buttonName
+        );
+
     } else if (google.maps.geometry.poly.containsLocation(point, bermudaTriangle21) === true) {
         addMarker('images/mapIcones/checked.png', { lat: 47.024314, lng: -122.929776 }, 'Building 35 '); // 47.024314, -122.929776
         visitedLocations.push('building 21');
+        navigator.vibrate(3000);
+
+        function alertDismissed() {
+            // do something
+        }
+
+        navigator.notification.alert(
+            'You are the winner!',  // message
+            alertDismissed,         // callback
+            'Game Over',            // title
+            'Done'                  // buttonName
+        );
+
     }
 
     var pLocation = document.getElementById("location");
     pLocation.innerHTML += latitude + ", " + longitude + "<br>";
+
+    var pVisited = document.getElementById("visited");
+    for (i = 0; i < visitedLocations.length; i++) {
+        pVisited.innerHTML += visitedLocations[i] + "<br>";
+    }
 
     /* var point = googleLoc;
  

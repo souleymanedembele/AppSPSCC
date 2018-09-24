@@ -107,7 +107,10 @@
   <plugin name="cordova-plugin-inappbrowser" spec="~3.0.0" />
   <plugin name="cordova-plugin-statusbar" spec="~2.4.2" />
   <plugin name="cordova-plugin-splashscreen" spec="~5.0.2" />
-  <preference name="KeepRunning" value="False" />
+  <preference name="KeepRunning" value="True" />
   <preference name="android-minSdkVersion" value="15" />
   <preference name="android-targetSdkVersion" value="24" />
+  <preference name="ShowTitle" value="False" />
+  <plugin name="cordova-plugin-dialogs" spec="~2.0.1" />
+  <plugin name="cordova-plugin-vibration" spec="~3.1.0" />
 </widget>

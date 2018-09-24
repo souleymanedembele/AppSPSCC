@@ -1,8 +1,9 @@
 body {
     font-size: 16pt;
+    
 }
 
-#navbar {
+#navBar {
     width: 100%;
     padding: 10px 0px;
     font-size: 1.4em;
@@ -10,10 +11,24 @@ body {
     position: fixed;
     top: 0px;
     left: 0px;
-    z-index: 10;
+    z-index: 1;
 }
 
-#park {
+#footer {
+    width: 100%;
+    padding: 10px 0px;
+    font-size: 1.4em;
+    text-align: center;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    z-index: 1;
+    background-color: #2196f3;
+    color: white;
+    box-shadow: darkgray 3px 3px 5px;
+}
+
+#track {
     float: left;
 }
 
@@ -29,7 +44,7 @@ button {
 
 #container {
     position: absolute;
-    top: 60px;
+    top: 55px;
     left: 0px;
     width: 100%;
 }
@@ -43,11 +58,9 @@ button {
 
 #map {
     position: relative;
-    height: 320px;
-    width: 90%;
-    max-width: 320px;
-    margin: 15px auto;
-    padding: 0px 10px;
+    height: 551px;
+    width: 100%;
+    margin: 0px auto;
     visibility: hidden;
 }
 
@@ -65,13 +78,13 @@ body {
     font-family: Roboto, sans-serif;
 }
 
-#navbar {
+#navBar {
     background-color: #2196f3;
     color: white;
     box-shadow: darkgray 3px 3px 5px;
 }
 
-#park, #retrieve {
+#track, #retrieve {
     border: 1px white solid;
 }
 
@@ -80,11 +93,13 @@ button {
     color: white;
 }
 
-#instructions, #map, #directions {
-    box-shadow: darkgray 3px 3px 5px;
-    border: 1px black solid;
+#instructions, button, #map, #directions {
+    /*    box-shadow: darkgray 3px 3px 5px;
+    border: 1px black solid;*/
+    border: 1px #dddddd solid;
+    border-radius: 5px;
 }
 
-#gotIt {
+#gotIt, button {
     border: 1px black solid;
 }
