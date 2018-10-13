@@ -32,6 +32,15 @@
                         <p style="text-align: center"><button id="gotIt" onClick="setCss('instructions','display','none'), setCss('map', 'visibility', 'visible')">Got It</button></p>
                     </div>
                     <div id="map"></div>
+                    <div>
+                        <strong>Mode of Travel: </strong>
+                        <select id="mode" onchange="calcRoute();">
+                            <option value="DRIVING">Driving</option>
+                            <option value="WALKING">Walking</option>
+                            <option value="BICYCLING">Bicycling</option>
+                            <option value="TRANSIT">Transit</option>
+                        </select>
+                    </div>
                     <div id="directions">
                     </div>
                     <div id="visited">
@@ -57,5 +66,8 @@
         <script type="text/javascript" src="cordova.js"></script>
         <!--<script type="text/javascript" src="scripts/platformOverrides.js"></script>-->
         <script type="text/javascript" src="scripts/index.js"></script>
+        <script type="text/javascript" src="scripts/building.js"></script>
+        <script type="text/javascript" src="scripts/visited_building.js"></script>
+        <script type="text/javascript" src="scripts/bounderies.js"></script>
     </body>
 </html>
