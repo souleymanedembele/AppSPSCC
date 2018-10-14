@@ -1,0 +1,105 @@
+body {
+    font-size: 16pt;
+    
+}
+
+#navBar {
+    width: 100%;
+    padding: 10px 0px;
+    font-size: 1.4em;
+    text-align: center;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+}
+
+#footer {
+    width: 100%;
+    padding: 10px 0px;
+    font-size: 1.4em;
+    text-align: center;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    z-index: 1;
+    background-color: #2196f3;
+    color: white;
+    box-shadow: darkgray 3px 3px 5px;
+}
+
+#track {
+    float: left;
+}
+
+#retrieve {
+    float: right;
+}
+
+button {
+    padding: 5px 10px;
+    margin: 0px 15px;
+    font-size: large;
+}
+
+#container {
+    position: absolute;
+    top: 55px;
+    left: 0px;
+    width: 100%;
+}
+
+#instructions {
+    position: relative;
+    width: 90%;
+    margin: 10px auto;
+    padding: 5px;
+}
+
+#map {
+    position: relative;
+    height: 360px;
+    width: 100%;
+    margin: 0px auto;
+    visibility: hidden;
+}
+
+#directions {
+    position: relative;
+    height: auto;
+    width: 90%;
+    max-width: 320px;
+    margin: 15px auto;
+    padding: 10px 10px;
+    visibility: hidden;
+}
+
+body {
+    font-family: Roboto, sans-serif;
+}
+
+#navBar {
+    background-color: #2196f3;
+    color: white;
+    box-shadow: darkgray 3px 3px 5px;
+}
+
+#track, #retrieve {
+    border: 1px white solid;
+}
+
+button {
+    background-color: #2196f3;
+    color: white;
+}
+
+#instructions, button, #map, #directions {
+    /*    box-shadow: darkgray 3px 3px 5px;
+    border: 1px black solid;*/
+    border: 1px #dddddd solid;
+    border-radius: 5px;
+}
+
+#gotIt, button {
+    border: 1px black solid;
+}
