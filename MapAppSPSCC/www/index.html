@@ -10,6 +10,9 @@
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
         <link rel="stylesheet" type="text/css" href="css/index.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+        <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
         <!--<link rel="stylesheet" type="text/css" href="css/platformOverrides.css" />-->
         <title>MapAppSPSCC</title>
     </head>
@@ -26,28 +29,61 @@
                     <!--<button id="retrieve" name="visitedButton">Visited</button>-->
                 </div>
                 <div id="container">
-                    <div id="instructions">
-                        <p>Click the start button to activate the watch function</p>
-                        <p>Click the Visited button to retrieve each Location you visited</p>
+                        <div id="instructions" class="card" style="width: 100%;">
+                            <img class="card-img-top" src="images/spscc.jpg" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">Welcome to SPSCC!</h5>
+                                <p class="card-text">We hope you're excited to learn a little more about our campus and hope you have a fun time hunting for clues on this self-guided scavenger hunt!</p>
+                                <p>You’ll need to go in at least 7 buildings to be eligible for the free prize at the end of the tour—or visit them all for extra bragging points!
+                                    <a class="btn" id="gotIt" onClick="setCss('instructions','display','none'), setCss('map', 'visibility', 'visible'), setCss('page', 'visibility', 'visible')">Get Started</a></p>
+                                <p style="text-align: center"> </p>
+</div>
+                        </div>
+                    <!--<div id="instructions">
+                        <h3>Get Started:</h3>
+                        <h4>Welcome to SPSCC!</h4>
+
+                        <p>We hope you're excited to learn a little more about our campus and hope you have a fun time hunting for clues on this self-guided scavenger hunt!</p>
+
+                        <p>You’ll need to go in at least 7 buildings to be eligible for the free prize at the end of the tour—or visit them all for extra bragging points!</p>
                         <p style="text-align: center"><button id="gotIt" onClick="setCss('instructions','display','none'), setCss('map', 'visibility', 'visible')">Got It</button></p>
+                                            <div id="dialog" title="Basic dialog">
+                        <p>Image:</p>
+                        <img src" alt="Placeholder Image" />
+
                     </div>
+                    </div>-->
+<!---->
+                    <div id="page" class="page">
+                        <div class="text-center">
+                            <img src="images/mood.png" alt="image" id="photo" class="rounded" >
+                            <button type="button" id="btn1">Selfie</button>
+                        </div>
+                        <p id="msg"></p>
+                    </div>
+
                     <div id="map"></div>
+
   <!--                  <div>
                         <strong>Mode of Travel: </strong>
                         <select id="mode" onchange="calcRoute();">
                             <option value="DRIVING">Driving</option>
                             <option value="WALKING">Walking</option>
                             <option value="BICYCLING">Bicycling</option>
-                            <option value="TRANSIT">Transit</option>
+                            <option value="TRANSIT">Transit</option>x   
                         </select>
                     </div>-->
                     <div id="directions">
                     </div>
                     <div >
-                        <!--<h1>How far did I go?</h1>-->
-                        <p id="visited"></p>
+                        <!--<h1>How far did I go?</h1>
+                            
+                            <p id="visited"></p>
                         <p id="location"></p>
                         <p id="distance"></p>
+                            
+                            -->
+                        
                     </div>
                 </div>
                 <!--
@@ -55,19 +91,26 @@
                 <p class="event received">Device is Ready</p>    
                 -->
             </div>
-            <div id="footer">
+<!--            <div id="footer">
                 SPSCC18-19
-            </div>
+            </div>-->
         </div>
 
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCq7PoBo5O9Y0ULTsqjEQCotS_2Zs_kfGc&libraries=geometry">
         </script>
-
+        <script>
+    $(function () {
+        $("#dialog").dialog();
+    });
+        </script>
         <script type="text/javascript" src="cordova.js"></script>
         <!--<script type="text/javascript" src="scripts/platformOverrides.js"></script>-->
         <script type="text/javascript" src="scripts/index.js"></script>
         <script type="text/javascript" src="scripts/building.js"></script>
         <script type="text/javascript" src="scripts/visited_building.js"></script>
         <script type="text/javascript" src="scripts/bounderies.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
+
     </body>
 </html>

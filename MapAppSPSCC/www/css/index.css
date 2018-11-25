@@ -1,8 +1,31 @@
 body {
     font-size: 16pt;
+    /*    background-color: #60605B;*/
     
 }
+ul {
+    position: relative;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    z-index: 1;
+}
 
+ul li {
+    background-color: #3A75CA;
+    color: white;
+    z-index: -1;
+    border-radius:8px;
+    border:solid 2px #60605B;
+    box-shadow: darkgray 2px 2px 4px;
+    padding:8px;
+    margin:4px;
+    width:50%;
+    text-align:center;
+    position:relative;
+    left:70px;
+    top:-40px;
+}
 #navBar {
     width: 100%;
     padding: 10px 0px;
@@ -23,7 +46,7 @@ body {
     bottom: 0px;
     left: 0px;
     z-index: 1;
-    background-color: #2196f3;
+    background-color: #0051BA;
     color: white;
     box-shadow: darkgray 3px 3px 5px;
 }
@@ -55,13 +78,38 @@ button {
     margin: 10px auto;
     padding: 5px;
 }
-
-#map {
+.page {
+    /*background-color:antiquewhite;*/
+    visibility: hidden;
+    margin:1rem;
+}
+#photo {
+    border: solid 2px #60605B;
+    width: 150px;
+    height: 180px;
+    margin-right: 1rem;
+}
+#msg{
+    visibility:hidden;
+}
+/**#btn1 {
     position: relative;
+    left:50px;
+    margin-bottom:2rem;
+}*/
+.btn {
+    background-color: #0051BA;
+    color: white;
+}
+#map {
+    position: fixed;
+    left: 0;
+    bottom: 0;
     height: 360px;
     width: 100%;
     margin: 0px auto;
     visibility: hidden;
+    z-index: 1;
 }
 
 #directions {
@@ -79,7 +127,7 @@ body {
 }
 
 #navBar {
-    background-color: #2196f3;
+    background-color: #0051BA;
     color: white;
     box-shadow: darkgray 3px 3px 5px;
 }
@@ -89,17 +137,19 @@ body {
 }
 
 button {
-    background-color: #2196f3;
+    background-color: #0051BA;
     color: white;
 }
 
 #instructions, button, #map, #directions {
     /*    box-shadow: darkgray 3px 3px 5px;
     border: 1px black solid;*/
+    position:fixed;
     border: 1px #dddddd solid;
     border-radius: 5px;
 }
 
 #gotIt, button {
-    border: 1px black solid;
+    border: 1px white solid;
+    color: white;
 }

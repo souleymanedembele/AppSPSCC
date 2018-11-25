@@ -79,4 +79,12 @@ let buildings = [
     building_15,
     building_14,
     building_13
+];
+
+let set_1 = [
+
+]
+
+let set_2 = [
+
 ]

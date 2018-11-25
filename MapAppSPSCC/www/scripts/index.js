@@ -25,6 +25,7 @@ var point;
         trackMe();
         
         
+        
         // TODO: Cordova has been loaded. Perform any initialization that requires Cordova here.
 
         /*
@@ -34,6 +35,7 @@ var point;
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');*/
     };
+    
 
     function onPause() {
         // TODO: This application has been suspended. Save application state here.
@@ -87,6 +89,7 @@ function initMap() {
         };
         map = new google.maps.Map(document.getElementById('map'), {
             center: pos,
+            gestureHandling: 'greedy',
             zoom: 18,
             styles: [
                 {
@@ -192,63 +195,14 @@ function initMap() {
             }
         };
 
-        /*
-                        // Construct the polygon 22.
-                var bermudaTriangle22 = new google.maps.Polygon({
-                    paths: triangleCoords22,
-                    strokeColor: '#FF0000',
-                    strokeOpacity: 0.8,
-                    strokeWeight: 3,
-                    fillColor: '#FF0000',
-                    fillOpacity: 0.35
-                });
-                bermudaTriangle22.setMap(map);
-                // Add a listener for the click event.
-                bermudaTriangle22.addListener('click', showArrays);
-                // Construct the polygon 27.
-                var bermudaTriangle27 = new google.maps.Polygon({
-                    paths: triangleCoords27,
-                    strokeColor: '#FF0000',
-                    strokeOpacity: 0.8,
-                    strokeWeight: 3,
-                    fillColor: '#FF0000',
-                    fillOpacity: 0.35
-                });
-                bermudaTriangle27.setMap(map);
-                // Add a listener for the click event.
-                bermudaTriangle27.addListener('click', showArrays);
-                // Construct the polygon.
-                var bermudaTriangle25 = new google.maps.Polygon({
-                    paths: triangleCoords25,
-                    strokeColor: '#FF0000',
-                    strokeOpacity: 0.8,
-                    strokeWeight: 3,
-                    fillColor: '#FF0000',
-                    fillOpacity: 0.35
-                });
-                bermudaTriangle25.setMap(map);
-                // Add a listener for the click event.
-                bermudaTriangle25.addListener('click', showArrays);
-                // Construct the polygon.
-                var bermudaTriangle21 = new google.maps.Polygon({
-                    paths: triangleCoords21,
-                    strokeColor: '#FF0000',
-                    strokeOpacity: 0.8,
-                    strokeWeight: 3,
-                    fillColor: '#FF0000',
-                    fillOpacity: 0.35
-                });
-                bermudaTriangle21.setMap(map);
-                // Add a listener for the click event.
-                bermudaTriangle21.addListener('click', showArrays);
-        */
+      
         infoWindow = new google.maps.InfoWindow;
 
 
-        var bl = document.querySelector('#bl');
-        for (i = 0; i < visitedLocations.length; i++) {
+/*        var bl = document.querySelector('#bl');
+        for (i = 0; i < visitedBuildings.length; i++) {
             bl.innerHTML += '<ul>' + '<li>' + visitedLocations[i] + '</li>' + '</ul>';
-        }
+        }*/
 
     });
 
@@ -258,7 +212,7 @@ function showArrays(event) {
     // Since this polygon has only one path, we can call getPath() to return the
     // MVCArray of LatLngs.
     var vertices = this.getPath();
-    var contentString = '<b>Bermuda Triangle polygon</b><br>' +
+    var contentString = '<b>Building 22</b><br>' +
         'Clicked location: <br>' + event.latLng.lat() + ',' + event.latLng.lng() +
         '<br>';
     // Iterate over the vertices.
@@ -273,8 +227,7 @@ function showArrays(event) {
     infoWindow.setPosition(event.latLng);
     infoWindow.open(map);
 }
-
-function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+  function calculateAndDisplayRoute(directionsService, directionsDisplay) {
     var selectedMode = document.getElementById('mode').value;
     directionsService.route({
         origin: { lat: 47.023760, lng: -122.930574 },  // Haight.
@@ -284,7 +237,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
         // "property."
         travelMode: google.maps.TravelMode[selectedMode]
     }, function (response, status) {
-        if (status == 'OK') {
+        if (status === 'OK') {
             directionsDisplay.setDirections(response);
         } else {
             window.alert('Directions request failed due to ' + status);
@@ -292,6 +245,38 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
     });
 }
 
+////////////////////////////Take Foto
+let app = {
+    init: function () {
+        document.getElementById('btn1').addEventListener('click', app.takephoto);
+    },
+    takephoto: function () {
+        let opts = {
+            quality: 80,
+            destinationType: Camera.DestinationType.FILE_URI,
+            sourceType: Camera.PictureSourceType.CAMERA,
+            mediaType: Camera.MediaType.PICTURE,
+            encodingType: Camera.EncodingType.JPEG,
+            cameraDirection: Camera.Direction.BACK,
+            targetWidth: 200,
+            targetHeight: 200,
+            correctOrientation: true
+        };
+
+        navigator.camera.getPicture(app.ftw, app.wtf, opts);
+    },
+    ftw: function (imgURI) {
+        document.getElementById('msg').textContent = imgURI;
+        document.getElementById('photo').src = imgURI;
+
+    },
+    wtf: function (msg) {
+        document.getElementById('msg').textContent = msg;
+    }
+};
+
+document.addEventListener('deviceready', app.init);
+///////////////////////////////////////////////
 function displayLocation(position) {
     var pVisited = document.getElementById("visited");
     /*for (var i = 0; i < visitedBuildings.length; i++) {
@@ -326,20 +311,79 @@ function displayLocation(position) {
     }
 
     point = googleLoc;
-    map.panTo(point);
+ /*   map.panTo(point);*/
     for (i = 0; i < bounderies.length; i++) {
         for (j = 0; j < buildings.length; j++) {
             if (google.maps.geometry.poly.containsLocation(point, bermuda[i]) === true) {
                
                 //building_35_success.deleteMarker();
-
                 if (buildings[i].visited === false) {
                     buildings[i].deleteMarker();
+
                     let successMark = new success(buildings[i].name, buildings[i].location);
                     buildings[i].success();
                     buildings[i].visited = true;
                     visitedBuildings.push(buildings[i].name);
                     pVisited.innerHTML += '<ul>' + '<li>' + buildings[i].name + '</li>' + '</ul>';
+
+                    function alertDismissed() {
+                        // do something
+                    }
+                    navigator.notification.alert(
+                        'Take a selfie',  // message
+                        alertDismissed,         // callback
+                        'First task',            // title
+                        'Done'                  // buttonName
+                    );
+/*                    function openCamera(selection) {
+
+                        var srcType = Camera.PictureSourceType.CAMERA;
+                        var options = setOptions(srcType);
+                        var func = createNewFileEntry;
+
+                        navigator.camera.getPicture(function cameraSuccess(imageUri) {
+
+                            displayImage(imageUri);
+                            // You may choose to copy the picture, save it somewhere, or upload.
+                            func(imageUri);
+
+                        }, function cameraError(error) {
+                            console.debug("Unable to obtain picture: " + error, "app");
+
+                        }, options);
+                    }
+
+
+/*
+                    navigator.camera.getPicture(onSuccess, onFail,
+                        {
+                            destinationType: Camera.DestinationType.FILE_URI,
+                            sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+                            popoverOptions: new CameraPopoverOptions(300, 300, 100, 100, Camera.PopoverArrowDirection.ARROW_ANY)
+                        });
+
+                    // Reposition the popover if the orientation changes.
+                    window.onorientationchange = function () {
+                        var cameraPopoverHandle = new CameraPopoverHandle();
+                        var cameraPopoverOptions = new CameraPopoverOptions(0, 0, 100, 100, Camera.PopoverArrowDirection.ARROW_ANY);
+                        cameraPopoverHandle.setPosition(cameraPopoverOptions);
+                    };
+
+
+                    function onSuccess(imageURI) {
+                        var image = document.getElementById('myImage');
+                        image.src = imageURI;
+                    }
+
+                    function onFail(message) {
+                        alert('Failed because: ' + message);
+                    }
+                    function cameraCallback(imageData) {
+                        var image = document.getElementById('myImage');
+                        image.src = "data:image/jpeg;base64," + imageData;
+                    }
+*/
+
                     //building_35_success.addMarker();
                     //let visited_35 = new visitedBuilding('Building 35', point);
                     //buildings_visited.push(visited_35.name);
@@ -370,7 +414,6 @@ function displayError(error) {
 
 function trackMe() {
     trackId = navigator.geolocation.watchPosition(displayLocation, displayError, { enableHighAccuracy: true });
-
 }
 
 function clearTracking() {
