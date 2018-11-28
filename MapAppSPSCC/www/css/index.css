@@ -10,7 +10,14 @@ ul {
     padding: 0;
     z-index: 1;
 }
+.progress {
+    background: #0051BA;
+    margin: 2px;
+}
 
+.progress-bar {
+    background: #0051BA;
+}
 ul li {
     background-color: #3A75CA;
     color: white;
@@ -83,14 +90,15 @@ button {
     visibility: hidden;
     margin:1rem;
 }
+
 #photo {
-    border: solid 2px #60605B;
+    border: solid 3px #60605B;
     width: 150px;
-    height: 180px;
+    height: 150px;
     margin-right: 1rem;
 }
 #msg{
-    visibility:hidden;
+    display:none;
 }
 /**#btn1 {
     position: relative;

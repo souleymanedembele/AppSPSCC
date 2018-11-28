@@ -255,24 +255,26 @@ let app = {
             quality: 80,
             destinationType: Camera.DestinationType.FILE_URI,
             sourceType: Camera.PictureSourceType.CAMERA,
+/*            sourceType: Camera.PictureSourceType.PHOTOLIBRARY,*/
             mediaType: Camera.MediaType.PICTURE,
             encodingType: Camera.EncodingType.JPEG,
             cameraDirection: Camera.Direction.BACK,
-            targetWidth: 200,
-            targetHeight: 200,
+            targetWidth: 360,
+            targetHeight: 640,
             correctOrientation: true
         };
 
         navigator.camera.getPicture(app.ftw, app.wtf, opts);
     },
     ftw: function (imgURI) {
-        document.getElementById('msg').textContent = imgURI;
-        document.getElementById('photo').src = imgURI;
 
+        var image = document.getElementById('photo');
+        image.src = imgURI;
+        document.getElementById('msg').textContent = imgURI;
     },
     wtf: function (msg) {
         document.getElementById('msg').textContent = msg;
-    }
+    },
 };
 
 document.addEventListener('deviceready', app.init);
@@ -324,16 +326,21 @@ function displayLocation(position) {
                     buildings[i].success();
                     buildings[i].visited = true;
                     visitedBuildings.push(buildings[i].name);
-                    pVisited.innerHTML += '<ul>' + '<li>' + buildings[i].name + '</li>' + '</ul>';
 
-                    function alertDismissed() {
+                    $(buildings[i].id).modal('show');
+/**
+ *                     pVisited.innerHTML += '<ul>' + '<li>' + buildings[i].name + '</li>' + '</ul>';
+ */
+
+               /*     function alertDismissed() {
                         // do something
                     }
+
                     navigator.notification.alert(
-                        'Take a selfie',  // message
+                        'You are the winner!',  // message
                         alertDismissed,         // callback
-                        'First task',            // title
-                        'Done'                  // buttonName
+                        'Game Over',            // title
+                        'Ok'                  // buttonName
                     );
 /*                    function openCamera(selection) {
 
@@ -479,3 +486,7 @@ function calcRoute() {
         }
     });
 }*/
+/*$(function () {
+    $('#myModal').on('shown.bs.modal', function () {
+        $('#myInput').trigger('focus')
+    })*/
