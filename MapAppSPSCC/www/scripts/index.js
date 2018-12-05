@@ -25,7 +25,6 @@ var point;
         trackMe();
         
         
-        
         // TODO: Cordova has been loaded. Perform any initialization that requires Cordova here.
 
         /*
@@ -34,7 +33,7 @@ var point;
         var receivedElement = parentElement.querySelector('.received');
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');*/
-    };
+    }
     
 
     function onPause() {
@@ -244,11 +243,11 @@ function showArrays(event) {
         }
     });
 }
-
+ 
 ////////////////////////////Take Foto
 let app = {
     init: function () {
-        document.getElementById('btn1').addEventListener('click', app.takephoto);
+        document.getElementById('btnSelfie').addEventListener('click', app.takephoto);
     },
     takephoto: function () {
         let opts = {
@@ -261,7 +260,8 @@ let app = {
             cameraDirection: Camera.Direction.BACK,
             targetWidth: 360,
             targetHeight: 640,
-            correctOrientation: true
+/*            allowEdit: true,*/
+            correctOrientation: true 
         };
 
         navigator.camera.getPicture(app.ftw, app.wtf, opts);
@@ -269,21 +269,29 @@ let app = {
     ftw: function (imgURI) {
 
         var image = document.getElementById('photo');
-        image.src = imgURI;
+        image.src =  imgURI;
         document.getElementById('msg').textContent = imgURI;
     },
     wtf: function (msg) {
         document.getElementById('msg').textContent = msg;
-    },
+    }
 };
 
 document.addEventListener('deviceready', app.init);
 ///////////////////////////////////////////////
+var mcount = document.getElementById("m");
+var gcount = document.getElementById("g");
 function displayLocation(position) {
     var pVisited = document.getElementById("visited");
-    /*for (var i = 0; i < visitedBuildings.length; i++) {
-        pVisited.innerHTML += '<ul>' + '<li>' + visitedBuildings[i] + '</li>' + '</ul>';
-    }*/
+    var mVisited = document.getElementById("visite");
+    for (var i = 0; i < visitedBuildings.length; i++) {
+       /* pVisited.innerHTML += '<ul>' + '<li>' + visitedBuildings[i] + '</li>' + '</ul>';*/
+    }
+    mcount.innerHTML = i;
+    gcount.innerHTML = i;
+    if (i === 7) {
+        $('#00').modal('show');
+    }
 
     var latitude = position.coords.latitude;
     var longitude = position.coords.longitude;
@@ -299,8 +307,9 @@ function displayLocation(position) {
         icon: im
     });
     gMarker.push(userMarker);
-    for (var i = 0; i < gMarker.length - 1; i++) {
+    for (i = 0; i < gMarker.length - 1; i++) {
         gMarker[i].setMap(null);
+        
     }
 
     for ( i = 0; i < bounderies.length; i++) {
@@ -309,28 +318,30 @@ function displayLocation(position) {
                 paths: bounderies[j]
             });
             bermuda.push(i);
+            
         }
     }
 
     point = googleLoc;
- /*   map.panTo(point);*/
+    /*   map.panTo(point);*/
+
+
     for (i = 0; i < bounderies.length; i++) {
+        
         for (j = 0; j < buildings.length; j++) {
             if (google.maps.geometry.poly.containsLocation(point, bermuda[i]) === true) {
-               
                 //building_35_success.deleteMarker();
                 if (buildings[i].visited === false) {
                     buildings[i].deleteMarker();
-
                     let successMark = new success(buildings[i].name, buildings[i].location);
                     buildings[i].success();
                     buildings[i].visited = true;
                     visitedBuildings.push(buildings[i].name);
-
+                    m++;
                     $(buildings[i].id).modal('show');
-/**
- *                     pVisited.innerHTML += '<ul>' + '<li>' + buildings[i].name + '</li>' + '</ul>';
- */
+                    pVisited.innerHTML += '<li data-role=' + 'list-divider' + '><a><h2>' + buildings[i].name + '</h2></a></li>';
+                    mVisited.innerHTML += '<li data-role=' + 'list-divider' + '><a><h2>' + buildings[i].name + '</h2></a></li>';
+                    
 
                /*     function alertDismissed() {
                         // do something
@@ -396,7 +407,7 @@ function displayLocation(position) {
                     //buildings_visited.push(visited_35.name);
                     //navigator.vibrate(1000);
                 } else if (buildings[i].visited === true) {
-
+                    ////
                 }
                 
 

@@ -18,44 +18,8 @@ ul {
 .progress-bar {
     background: #0051BA;
 }
-ul li {
-    background-color: #3A75CA;
-    color: white;
-    z-index: -1;
-    border-radius:8px;
-    border:solid 2px #60605B;
-    box-shadow: darkgray 2px 2px 4px;
-    padding:8px;
-    margin:4px;
-    width:50%;
-    text-align:center;
-    position:relative;
-    left:70px;
-    top:-40px;
-}
-#navBar {
-    width: 100%;
-    padding: 10px 0px;
-    font-size: 1.4em;
-    text-align: center;
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    z-index: 1;
-}
-
-#footer {
-    width: 100%;
-    padding: 10px 0px;
-    font-size: 1.4em;
-    text-align: center;
-    position: fixed;
-    bottom: 0px;
-    left: 0px;
-    z-index: 1;
-    background-color: #0051BA;
-    color: white;
-    box-shadow: darkgray 3px 3px 5px;
+#popup {
+    margin-top:2rem;
 }
 
 #track {
@@ -87,14 +51,14 @@ button {
 }
 .page {
     /*background-color:antiquewhite;*/
-    visibility: hidden;
-    margin:1rem;
+    /*visibility: hidden;*/
+    margin: 1rem;
 }
 
 #photo {
     border: solid 3px #60605B;
-    width: 150px;
-    height: 150px;
+    width: 250px;
+    height: 300px;
     margin-right: 1rem;
 }
 #msg{
@@ -105,19 +69,18 @@ button {
     left:50px;
     margin-bottom:2rem;
 }*/
-.btn {
-    background-color: #0051BA;
-    color: white;
+
+
+#selfie{
+    z-index:100;
 }
 #map {
     position: fixed;
-    left: 0;
-    bottom: 0;
+    z-index: 1;
     height: 360px;
     width: 100%;
     margin: 0px auto;
-    visibility: hidden;
-    z-index: 1;
+    /**    visibility: hidden;*/
 }
 
 #directions {
@@ -133,11 +96,23 @@ button {
 body {
     font-family: Roboto, sans-serif;
 }
-
+#myTop{
+    position:sticky;
+    margin-top:3rem;
+}
 #navBar {
     background-color: #0051BA;
     color: white;
     box-shadow: darkgray 3px 3px 5px;
+    width: 100%;
+    padding: 10px 0px;
+    font-size: 1.4em;
+    text-align: center;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+    margin-bottom: 2rem;
 }
 
 #track, #retrieve {
@@ -148,6 +123,7 @@ button {
     background-color: #0051BA;
     color: white;
 }
+
 
 #instructions, button, #map, #directions {
     /*    box-shadow: darkgray 3px 3px 5px;

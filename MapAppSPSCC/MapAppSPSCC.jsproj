@@ -74,7 +74,7 @@
   </Target>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties />
+      <UserProperties bower_1json__JSONSchema="" />
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>
